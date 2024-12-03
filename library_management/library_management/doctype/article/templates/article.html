@@ -1,0 +1,75 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+
+<div class="book-container">
+    <h1 class="book-title">{{ title }}</h1>
+    
+    {% if image %}
+        <img src="{{ image }}" alt="{{ title }}" class="book-image" />
+    {% else %}
+        <p>No image available</p>
+    {% endif %}
+    
+    <div class="book-meta">
+        <p><strong>By:</strong> {{ author }}</p>
+        
+        <p>
+            {%- if status == 'Available' -%}
+                <span class="status available">Available</span>
+            {%- elif status == 'Issued' -%}
+                <span class="status issued">Issued</span>
+            {%- endif -%}
+        </p>
+        
+        <p><strong>Publisher:</strong> {{ publisher }}</p>
+        <p><strong>ISBN:</strong> {{ isbn }}</p>
+    </div>
+
+    <div class="book-description">
+        <h2>Description</h2>
+        <p>{{ description }}</p>
+    </div>
+</div>
+
+<style>
+    .book-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+    
+    .book-title {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+    
+    .book-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .book-meta {
+        margin-bottom: 20px;
+    }
+    
+    .status {
+        font-weight: bold;
+    }
+    
+    .available {
+        color: green;
+    }
+    
+    .issued {
+        color: red;
+    }
+
+    .book-description {
+        margin-top: 20px;
+    }
+</style>
+
+{% endblock %}

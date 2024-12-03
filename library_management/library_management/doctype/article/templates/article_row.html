@@ -1,0 +1,52 @@
+<div class="document-item">
+    <a href="/{{ doc.route | e }}" class="document-link">
+        <h2 class="document-title">{{ (doc.title or doc.name) | e }}</h2>
+    </a>
+
+    {% if doc.image %}
+        <img src="{{ doc.image }}" alt="{{ doc.name }}" class="document-image" />
+    {% else %}
+        <p>No image available</p>
+    {% endif %}
+
+    <div class="document-meta">
+        <p class="document-author">By {{ doc.author }}</p>
+    </div>
+</div>
+
+<style>
+    .document-item {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px 0;
+        max-width: 600px;
+        background-color: #f9f9f9;
+    }
+
+    .document-link {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .document-title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .document-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .document-meta {
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    .document-author {
+        margin-top: 5px;
+    }
+</style>
